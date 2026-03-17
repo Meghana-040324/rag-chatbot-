@@ -1,0 +1,10 @@
+﻿env/
+venv/
+data/
+.env
+__pycache__/
+*.pyc
+*.pyd
+*.dll
+.DS_Store
+test.ipynb
