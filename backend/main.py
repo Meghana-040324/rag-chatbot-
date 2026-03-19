@@ -2,6 +2,9 @@ from fastapi import FastAPI, UploadFile, File
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 import shutil, os, sys
+from dotenv import load_dotenv
+
+load_dotenv()  # add this line
 
 sys.path.append(os.path.dirname(__file__))
 
