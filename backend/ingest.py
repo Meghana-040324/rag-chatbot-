@@ -1,11 +1,10 @@
 from langchain_community.document_loaders import PyMuPDFLoader
 from langchain_text_splitters import RecursiveCharacterTextSplitter
-from langchain_community.embeddings import HuggingFaceEmbeddings
+from langchain_openai import OpenAIEmbeddings
 from langchain_community.vectorstores import Chroma
 import os
 
 CHROMA_PATH = "data/chroma_db"
-EMBED_MODEL = "all-MiniLM-L6-v2"
 
 def ingest_document(file_path: str) -> dict:
     # Step 1 — Load PDF and extract text
@@ -23,7 +22,7 @@ def ingest_document(file_path: str) -> dict:
     print(f"Created {len(chunks)} chunks")
 
     # Step 3 — Create embeddings (runs locally, no API needed)
-    embeddings = HuggingFaceEmbeddings(model_name=EMBED_MODEL)
+    embeddings = OpenAIEmbeddings()
 
     # Step 4 — Store in ChromaDB
     vectorstore = Chroma.from_documents(

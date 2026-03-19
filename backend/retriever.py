@@ -1,11 +1,11 @@
-from langchain_community.embeddings import HuggingFaceEmbeddings
+from langchain_openai import OpenAIEmbeddings
 from langchain_community.vectorstores import Chroma
 
 CHROMA_PATH = "data/chroma_db"
 EMBED_MODEL  = "all-MiniLM-L6-v2"
 
 def retrieve_chunks(query: str, k: int = 4) -> list:
-    embeddings = HuggingFaceEmbeddings(model_name=EMBED_MODEL)
+    embeddings = OpenAIEmbeddings()
     vectorstore = Chroma(
         persist_directory=CHROMA_PATH,
         embedding_function=embeddings
