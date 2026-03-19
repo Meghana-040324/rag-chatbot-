@@ -5,9 +5,9 @@ import shutil, os, sys
 
 sys.path.append(os.path.dirname(__file__))
 
-from ingest import ingest_document
-from retriever import retrieve_chunks
-from llm import answer_with_context
+from backend.ingest import ingest_document
+from backend.retriever import retrieve_chunks
+from backend.llm import answer_with_context
 
 app = FastAPI(title="RAG Chatbot")
 
